@@ -5,3 +5,4 @@ Before uploading to AWS, open the folder in code editor and run:
 ```
  npm install
 ```
+We also included the SQL file we created to both create the relational database and an SQL file to test queries and check the contents of the tables.
