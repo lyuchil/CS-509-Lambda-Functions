@@ -14,6 +14,9 @@ exports.handler = async (event) => {
 
     return new Promise((resolve, reject) => {
       let sql = "SELECT CName, CPrice, CMemory, CStorageSize, CProcessor, CProcessorGen, CGraphics FROM TheCS.Computer AS C WHERE C.StoreID = ?";
+      if (event.PriceSort && (event.PriceSort === "ASC" || event.PriceSort === "DESC")) {
+        sql += ` ORDER BY CPrice ${event.PriceSort}`;
+      }
       pool.query(sql, [event.StoreID], (error, row) => {
           if (error) { return reject(error); }
           else if(row){
