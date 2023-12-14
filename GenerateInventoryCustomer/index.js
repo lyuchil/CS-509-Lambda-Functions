@@ -12,7 +12,7 @@ exports.handler = async (event) => {
 
   let generateInventoryCustomer = (event) => {
     return new Promise((resolve, reject) => {
-      let sql = "SELECT STName, CName, CPrice, CMemory, CStorageSize, CProcessor, CProcessorGen, CGraphics FROM TheCS.Computer NATURAL JOIN TheCS.Store AS C WHERE C.StoreID IN (?) AND CGraphics IN (?) AND CProcessorGen IN (?) AND CProcessor IN (?) AND CStorageSize IN (?) AND CMemory IN (?)";
+      let sql = "SELECT STName, STLatitude, STLongitude, CName, CPrice, CMemory, CStorageSize, CProcessor, CProcessorGen, CGraphics FROM TheCS.Computer NATURAL JOIN TheCS.Store AS C WHERE C.StoreID IN (?) AND CGraphics IN (?) AND CProcessorGen IN (?) AND CProcessor IN (?) AND CStorageSize IN (?) AND CMemory IN (?)";
       if (event.PriceSort === "ASC" || event.PriceSort === "DESC") {
         sql += ` ORDER BY CPrice ${event.PriceSort}`;
       }
